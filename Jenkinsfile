@@ -4,7 +4,7 @@ pipeline
     stages{
         stage ("build"){
             steps{
-                echo "Build Milad"
+                echo "Build Milad test for interval"
             }
         }
         stage ("deploy") {
