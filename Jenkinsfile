@@ -4,12 +4,12 @@ pipeline
     stages{
         stage ("build"){
             steps{
-                echo "Build"
+                echo "Build Milad"
             }
         }
         stage ("deploy") {
             steps{
-            echo "Deploy"
+            echo "Deploy Milad"
             }
         }
 
