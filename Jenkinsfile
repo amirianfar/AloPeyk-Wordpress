@@ -1,7 +1,7 @@
 pipeline {
   agent any
   options {
-    buildDiscarder(logRotator(numToKeepStr: '5'))
+    buildDiscarder(logRotator(numToKeepStr: '2'))
   }
   environment {
     DOCKERHUB_CREDENTIALS = credentials('amirianfar')
@@ -9,7 +9,7 @@ pipeline {
   stages {
     stage('Build') {
       steps {
-        sh 'docker build -t amirianfar/miladmain  .'
+        sh 'docker build -t miladwordpress/wordpress:1.0  .'
       }
     }
     stage('Login') {
@@ -22,6 +22,11 @@ pipeline {
         sh 'docker push amirianfar/miladmain'
       }
     }
+    stage('Deploy') {
+      steps {
+        sh 'docker-compose.yaml up'
+      }
+    }
   }
   post {
     always {
@@ -29,3 +34,4 @@ pipeline {
     }
   }
 }
+
